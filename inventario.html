@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Productos</title>
+    <link rel="stylesheet" href="css/myStyleInventario.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="container py-5">
+        <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <img class="logo" src="images/logoDestilacionNocturna.png" alt="Logo Destilacion Nocturna">
+         <a class="navbar-brand"><strong>Destilación Nocturna</strong></a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                   <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link " href="productos.html">Catalogo</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href="iniciarSesion.html">Iniciar Admin</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+        </nav>
+        <h1 class="text-center mb-5 header-inventory">Gestión de Inventario de Productos</h1>
+
+        <div class="text-end mb-4">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#agregarProductoModal">
+                <i class="bi bi-plus-circle-fill me-1"></i> Agregar Nuevo Producto
+            </button>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="listaProductos">
+            </div>
+    </div>
+
+    <div class="modal fade" id="agregarProductoModal" tabindex="-1" aria-labelledby="agregarProductoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-warning">
+                    <h5 class="modal-title text-warning" id="agregarProductoModalLabel">Ingreso de Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productoForm">
+                        <input type="hidden" id="productoId" value=""> 
+
+                        <div class="mb-3">
+                            <label for="nombreProd" class="form-label">Nombre del Producto</label>
+                            <input type="text" class="form-control" id="nombreProd" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoProd" class="form-label">Tipo de Producto (Vino, Cerveza, etc.)</label>
+                            <input type="text" class="form-control" id="tipoProd" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="alcoholProd" class="form-label">Cantidad de Alcohol (%)</label>
+                            <input type="number" class="form-control" id="alcoholProd" min="0" max="100" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="stockProd" class="form-label">Stock (Cantidad de Productos)</label>
+                            <input type="number" class="form-control" id="stockProd" min="0" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagenProd" class="form-label">URL/Ruta de Imagen</label>
+                            <input type="text" class="form-control" id="imagenProd" placeholder="Ej: images/nueva_botella.jpg">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-warning">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning" onclick="guardarProducto()">
+                        <i class="bi bi-save-fill me-1"></i> Guardar Producto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <script>
+        // La variable 'productos' se inicializa vacía, pero se llenará con 'cargarDatos()'
+        let productos = []; 
+        const productosIniciales = [
+             { id: 1, nombre: "Armarula", tipo: "Licor", alcohol: 17, stock: 50, imagen: "images/armalura.jpeg" },
+             { id: 2, nombre: "Bacardi Añejo", tipo: "Ron", alcohol: 38, stock: 35, imagen: "images/bacardi1.jpeg" },
+             { id: 3, nombre: "Black Label", tipo: "Whisky", alcohol: 40, stock: 15, imagen: "images/black.jpeg" },
+             { id: 4, nombre: "Cacique", tipo: "Ron", alcohol: 38, stock: 25, imagen: "images/cacique.jpeg" },
+             { id: 5, nombre: "Jägermeister", tipo: "Licor", alcohol: 35, stock: 40, imagen: "images/reno.jpeg" },
+             { id: 6, nombre: "Corona Extra", tipo: "Cerveza", alcohol: 4.5, stock: 100, imagen: "images/corona.jpeg" },
+             { id: 7, nombre: "Heineken", tipo: "Cerveza", alcohol: 5, stock: 80, imagen: "images/heineken.jpeg" },
+        ];
+
+
+        // --- Funciones de Persistencia (LocalStorage) ---
+
+        function guardarDatos() {
+            localStorage.setItem('productosInventario', JSON.stringify(productos));
+        }
+
+        function cargarDatos() {
+            const datosGuardados = localStorage.getItem('productosInventario');
+            if (datosGuardados) {
+                // Si hay datos guardados, los usa
+                productos = JSON.parse(datosGuardados);
+            } else {
+                // Si no hay datos (primera carga), usa el array inicial y lo guarda
+                productos = productosIniciales;
+                guardarDatos();
+            }
+            renderizarInventario(); // Dibuja la lista después de cargar
+        }
+
+        // --- Funciones de Renderizado y Acciones ---
+
+        function renderizarInventario() {
+            const contenedor = document.getElementById('listaProductos');
+            contenedor.innerHTML = ''; 
+
+            if (productos.length === 0) {
+                contenedor.innerHTML = '<p class="text-center text-secondary">No hay productos en el inventario.</p>';
+                return;
+            }
+
+            productos.forEach(producto => {
+                const col = document.createElement('div');
+                col.className = 'col';
+                col.innerHTML = `
+                    <div class="card card-inventory h-100">
+                        <img src="${producto.imagen}" class="card-img-top mx-auto mt-3" alt="${producto.nombre}" style="height: 150px; width: 150px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-warning">${producto.nombre}</h5>
+                            <p class="card-text small">Tipo: ${producto.tipo} | Cant. Alcohol: ${producto.alcohol}% | Stock: ${producto.stock} unid.</p>
+                            <hr class="border-warning opacity-25">
+                            <button type="button" class="btn btn-outline-info btn-action" 
+                                onclick="modificarProducto(${producto.id})">
+                                <i class="bi bi-pencil-square"></i> Modificar
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-action" 
+                                onclick="eliminarProducto(${producto.id})">
+                                <i class="bi bi-trash-fill"></i> Eliminar
+                            </button>
+                        </div>
+                    </div>
+                `;
+                contenedor.appendChild(col);
+            });
+        }
+
+        function guardarProducto() {
+            const id = document.getElementById('productoId').value;
+            const nombre = document.getElementById('nombreProd').value;
+            const tipo = document.getElementById('tipoProd').value;
+            const alcohol = parseFloat(document.getElementById('alcoholProd').value);
+            const stock = parseInt(document.getElementById('stockProd').value);
+            const imagen = document.getElementById('imagenProd').value || 'images/default.jpg'; 
+
+            if (!nombre || !tipo || isNaN(alcohol) || isNaN(stock)) {
+                alert('Por favor, complete todos los campos requeridos.');
+                return;
+            }
+
+            if (id) {
+                // Lógica de MODIFICACIÓN
+                const index = productos.findIndex(p => p.id == id);
+                if (index > -1) {
+                    productos[index] = { id: parseInt(id), nombre, tipo, alcohol, stock, imagen };
+                    alert(`Producto '${nombre}' modificado con éxito.`);
+                }
+            } else {
+                // Lógica de AGREGAR
+                const nuevoId = productos.length > 0 ? Math.max(...productos.map(p => p.id)) + 1 : 1;
+                productos.push({ id: nuevoId, nombre, tipo, alcohol, stock, imagen });
+                alert(`Producto '${nombre}' agregado con éxito.`);
+            }
+
+            // Cierra el modal, actualiza la vista y guarda en localStorage
+            const modalElement = document.getElementById('agregarProductoModal');
+            const modal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+            modal.hide();
+            document.getElementById('productoForm').reset();
+            renderizarInventario();
+            guardarDatos();
+        }
+
+        function eliminarProducto(id) {
+            if (confirm(`¿Estás seguro de que quieres eliminar este producto? (ID: ${id})`)) {
+                productos = productos.filter(p => p.id !== id);
+                
+                // Actualiza la vista y guarda los cambios
+                renderizarInventario();
+                guardarDatos(); 
+            }
+        }
+
+        function modificarProducto(id) {
+            const producto = productos.find(p => p.id === id);
+            if (producto) {
+                // Carga los datos del producto en el formulario
+                document.getElementById('productoId').value = producto.id;
+                document.getElementById('nombreProd').value = producto.nombre;
+                document.getElementById('tipoProd').value = producto.tipo;
+                document.getElementById('alcoholProd').value = producto.alcohol;
+                document.getElementById('stockProd').value = producto.stock;
+                document.getElementById('imagenProd').value = producto.imagen;
+
+                // Abre el modal
+                const modalElement = document.getElementById('agregarProductoModal');
+                const modal = new bootstrap.Modal(modalElement);
+                modal.show();
+            }
+        }
+        
+        // Carga los datos al iniciar la página
+        document.addEventListener('DOMContentLoaded', cargarDatos);
+    </script>
+</body>
+</html>

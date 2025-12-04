@@ -1,0 +1,63 @@
+.navbar {
+background-color: black;
+}
+.navbar a{
+    color: darkgoldenrod;
+    font-size: 20px;
+    margin-left: 30px;
+}
+.navbar a:hover{
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+.header-inventory {
+color: #ffc107; 
+}
+.card-inventory {
+background-color: #212529;
+border: 1px solid #ffc107;
+}
+.btn-action {
+width: 100%;
+margin-bottom: 5px;
+}
+#titulo{
+    align-items: center;
+    color: whitesmoke;
+    height: 80vh;
+    background-image: url('../images/fondo3.jpeg');
+    background-size: cover;
+    display: flex;
+    justify-content: center; 
+}
+html body {
+    background-color: black;
+}
+footer{
+    background-color: rgb(121, 0, 105);
+    text-align: center;
+    color: white;
+    padding: 10px;
+   
+}
+.links{
+    text-decoration: none;
+    margin: 5px;
+    color: aliceblue;
+}
+
+body{
+    background-color: #b3d9ff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.contenedor{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
