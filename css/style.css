@@ -15,7 +15,7 @@ background-color: black;
     position: relative;
 }
 .carousel-item img {
-    height: 500px; /* La imagen toma la misma altura */
+    height: 200px; /* La imagen toma la misma altura */
     object-fit: cover;
 }
 header{
@@ -25,7 +25,7 @@ header{
 }
 header h1{
     color: goldenrod;
-    font-size: 100px;
+    font-size: 50px;
 }
 header p{
     color: rgb(255, 255, 255);
@@ -73,7 +73,7 @@ header p{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: black;
     color: white;
-    width: 100px;
+    width: 50px;
     transition: transform 0.3s;
     flex-shrink: 0;
     margin-left: 40px;
@@ -104,12 +104,12 @@ header p{
     text-align: center;
 }
 .tituloHis{
-    font-size: 100px;
+    font-size: 50px;
     color: goldenrod;
     margin-bottom: 30px;
 }
 .pHis{
-    font-size: 50px;
+    font-size: 25px;
 }
 
 /*adicionales*/
@@ -216,4 +216,5 @@ footer{
     }
 
 }
+
 
