@@ -1,0 +1,217 @@
+body{
+    background-color: black;
+}
+.navbar {
+background-color: black;
+}
+.navbar a{
+    color: darkgoldenrod;
+    font-size: 50px;
+    margin-left: 30px;
+}
+.carrousel-container {
+    max-height: 500px; /* Aquí controlas la altura máxima en desktop */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que exceda la altura */
+    position: relative;
+}
+.carousel-item img {
+    height: 2000px; /* La imagen toma la misma altura */
+    object-fit: cover;
+}
+header{
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+}
+header h1{
+    color: goldenrod;
+    font-size: 100px;
+}
+header p{
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    display: inline-block;
+    margin-right: 100px;
+}
+.boton{
+    color: white;
+    border-radius: 15px;
+    background-color: goldenrod;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 50px;
+}
+.votaciones{
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    margin-top: none;
+    padding: 3rem 0;
+    background-color: rgb(26, 26, 26);
+}
+.tituloVot{
+    text-align: center;
+    color: goldenrod;
+    font-size: 100px;
+    margin-bottom: 50px;
+}
+.container-card{
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: auto;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 0 -20px;
+}
+.card{
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: black;
+    color: white;
+    width: 1000px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-left: 40px;
+}
+.pVot{
+    font-size: 70px;
+    text-align: center;
+}
+.card-text{
+    font-size: 20px;
+    text-align: center;
+}
+.bi{
+    color: rgb(255, 0, 0);
+    font-size: 70px;
+    margin-top: 20px;
+}
+.votos{
+    font-size: 40px;
+    display: inline-block;
+    margin-left: 20px;
+    text-align: left;
+}
+.historia{
+    padding: 50px;
+    background-image: url(../images/background.png);
+    color: white;
+    text-align: center;
+}
+.tituloHis{
+    font-size: 100px;
+    color: goldenrod;
+    margin-bottom: 30px;
+}
+.pHis{
+    font-size: 50px;
+}
+
+/*adicionales*/
+.navbar a:hover{
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+header a:hover{
+    background-color: rgb(226, 2, 226);
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+.bi:hover{
+    color: rgb(184, 8, 178);
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+.card:hover{
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+.alert{
+    font-size:35px;
+}
+footer{
+    background-color: rgb(121, 0, 105);
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 50px;
+   
+}
+.fab{
+    color: darkgoldenrod;
+    font-size: 40px;
+    margin: 5px;
+}
+
+/*responsibo*/
+
+@media (max-width: 712px) {
+    nav{
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar-brand{
+        font-size: 0px;
+    }
+    .navbar a{
+        font-size: 50px;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .logo{
+        width: 50px;
+        height: auto;
+    }
+    header h1{
+        font-size: 50px;
+    }
+    header p{
+        font-size: 35px;
+        margin-right: 0;
+    }
+    .boton{
+        font-size: 15px;
+    }
+    .carrousel-container {
+        max-height: 300px;
+    }
+    .container-card{
+        flex-direction: column;
+        align-items: center;
+    }
+    .card{
+        width: 80%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+    .tituloVot{
+        font-size: 50px;
+    }
+    .pVot{
+        font-size: 25px;
+    }
+    .card-text{
+        font-size: 20px;
+    }
+    .votos{
+        font-size: 20px;
+    }
+    .bi{
+        font-size: 30px;
+    }
+    .tituloHis{
+        font-size: 30px;
+    }
+    .pHis{
+        font-size: 20px;
+        text-align: start;
+    }
+}
