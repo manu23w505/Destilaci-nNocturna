@@ -6,11 +6,11 @@ background-color: black;
 }
 .navbar a{
     color: darkgoldenrod;
-    font-size: 20px;
+    font-size: 10px;
     margin-left: 30px;
 }
 .carrousel-container {
-    max-height: 500px; /* Aquí controlas la altura máxima en desktop */
+    max-height: 50px; /* Aquí controlas la altura máxima en desktop */
     overflow: hidden; /* Oculta cualquier parte de la imagen que exceda la altura */
     position: relative;
 }
@@ -73,7 +73,7 @@ header p{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: black;
     color: white;
-    width: 10px;
+    width: 5px;
     transition: transform 0.3s;
     flex-shrink: 0;
     margin-left: 40px;
@@ -216,6 +216,7 @@ footer{
     }
 
 }
+
 
 
 
