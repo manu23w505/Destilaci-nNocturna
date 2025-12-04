@@ -15,7 +15,7 @@ background-color: black;
     position: relative;
 }
 .carousel-item img {
-    height: 2000px; /* La imagen toma la misma altura */
+    height: 1000px; /* La imagen toma la misma altura */
     object-fit: cover;
 }
 header{
@@ -73,7 +73,7 @@ header p{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: black;
     color: white;
-    width: 1000px;
+    width: 500px;
     transition: transform 0.3s;
     flex-shrink: 0;
     margin-left: 40px;
@@ -214,4 +214,5 @@ footer{
         font-size: 20px;
         text-align: start;
     }
+
 }
