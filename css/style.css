@@ -6,7 +6,7 @@ background-color: black;
 }
 .navbar a{
     color: darkgoldenrod;
-    font-size: 50px;
+    font-size: 20px;
     margin-left: 30px;
 }
 .carrousel-container {
@@ -15,7 +15,7 @@ background-color: black;
     position: relative;
 }
 .carousel-item img {
-    height: 200px; /* La imagen toma la misma altura */
+    height: 50px; /* La imagen toma la misma altura */
     object-fit: cover;
 }
 header{
@@ -73,7 +73,7 @@ header p{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: black;
     color: white;
-    width: 50px;
+    width: 10px;
     transition: transform 0.3s;
     flex-shrink: 0;
     margin-left: 40px;
@@ -216,5 +216,6 @@ footer{
     }
 
 }
+
 
 
